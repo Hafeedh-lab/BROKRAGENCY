@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-blue rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-blue/80;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-blue ring-offset-2;
+  }
+
+  ::selection {
+    @apply bg-brand-blue/20 text-brand-navy;
+  }
+}
+
+@layer components {
+  .form-input {
+    @apply w-full px-4 py-3 rounded-lg border-2 border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:border-brand-blue focus:ring-0 transition-colors;
+  }
+
+  .form-textarea {
+    @apply form-input resize-none;
+  }
+
+  .form-select {
+    @apply form-input appearance-none bg-no-repeat bg-right pr-10;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23374151' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-size: 1.5em 1.5em;
+    background-position: right 0.5rem center;
+  }
+
+  .form-checkbox,
+  .form-radio {
+    @apply rounded border-neutral-300 text-brand-blue focus:ring-brand-blue focus:ring-offset-0 transition-colors;
+  }
+
+  .card {
+    @apply bg-base rounded-xl shadow-card border border-neutral-100 p-6;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-card-hover transition-shadow;
+  }
+
+  .link {
+    @apply text-brand-blue hover:underline transition-colors;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center gap-1 px-3 py-1 bg-brand-gold/10 border border-brand-gold/30 text-brand-navy font-semibold rounded-full text-sm;
+  }
+}
+
+@layer utilities {
+  .text-gradient-brand {
+    @apply bg-gradient-to-r from-brand-navy to-brand-blue bg-clip-text text-transparent;
+  }
+
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
