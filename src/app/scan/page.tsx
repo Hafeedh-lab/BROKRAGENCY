@@ -208,7 +208,7 @@ type FormCtx = ReturnType<typeof useForm<ScanFormValues>>;
 
 type FieldArrayItem = {
   id: string;
-  channel: string;
+  channel: 'paid_search' | 'paid_social' | 'seo_content' | 'lifecycle_email' | 'cro' | 'affiliates' | 'podcast_sponsorships' | 'offline_events' | 'pr_earned';
   spendPercent: number;
 };
 
@@ -216,7 +216,7 @@ function renderStep(
   step: Step,
   form: FormCtx,
   fields: FieldArrayItem[],
-  append: (value: { channel: string; spendPercent: number }) => void,
+  append: (value: { channel: 'paid_search' | 'paid_social' | 'seo_content' | 'lifecycle_email' | 'cro' | 'affiliates' | 'podcast_sponsorships' | 'offline_events' | 'pr_earned'; spendPercent: number }) => void,
   remove: (index: number) => void,
   proposalText: string,
   setProposalText: (value: string) => void,
