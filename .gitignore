@@ -18,3 +18,4 @@ prisma/dev.db*
 
 # Upload temp storage
 uploads
+.env
