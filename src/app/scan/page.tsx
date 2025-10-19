@@ -212,11 +212,13 @@ type FieldArrayItem = {
   spendPercent: number;
 };
 
+type AppendFn = ReturnType<typeof useFieldArray<ScanFormValues, 'currentChannels'>>['append'];
+
 function renderStep(
   step: Step,
   form: FormCtx,
   fields: FieldArrayItem[],
-  append: (value: { channel: string; spendPercent: number }) => void,
+  append: AppendFn,
   remove: (index: number) => void,
   proposalText: string,
   setProposalText: (value: string) => void,

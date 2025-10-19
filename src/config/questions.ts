@@ -216,25 +216,25 @@ export const QUESTION_STEPS: QuestionStep[] = [
 ];
 
 export const scanInputSchema = z.object({
-  industry: z.string(),
-  revenueBand: z.string(),
-  monthlyBudget: z.string(),
-  goals: z.array(z.string()).min(1).max(3),
-  inHouseRoles: z.array(z.string()).min(1),
-  decisionRights: z.string(),
+  industry: z.enum(['b2b_saas', 'b2c_ecommerce', 'professional_services', 'tech_hardware', 'fintech', 'healthcare', 'education', 'media', 'nonprofit', 'other']),
+  revenueBand: z.enum(['<1m', '1m-5m', '5m-20m', '20m-100m', '>100m']),
+  monthlyBudget: z.enum(['<5k', '5k-15k', '15k-50k', '50k-150k', '>150k']),
+  goals: z.array(z.enum(['pipeline_growth', 'cac_efficiency', 'ltv_expansion', 'brand_search', 'geo_expansion', 'product_launch', 'category_education', 'retention_improvement'])).min(1).max(3),
+  inHouseRoles: z.array(z.enum(['founder_ceo', 'head_of_marketing', 'growth_lead', 'content_lead', 'data_analyst', 'product_marketing', 'sales_ops', 'none'])).min(1),
+  decisionRights: z.enum(['founder_only', 'marketing_lead', 'shared_committee', 'unclear']),
   creativeCadence: z.number().min(0),
   croCadence: z.number().min(0),
   currentChannels: z
     .array(
       z.object({
-        channel: z.string(),
+        channel: z.enum(['paid_search', 'paid_social', 'seo_content', 'lifecycle_email', 'cro', 'affiliates', 'podcast_sponsorships', 'offline_events', 'pr_earned']),
         spendPercent: z.number().min(0).max(100),
       }),
     )
     .min(1),
-  plannedChannels: z.array(z.string()).min(0),
-  sourceOfTruth: z.string(),
-  reportingCadence: z.string(),
+  plannedChannels: z.array(z.enum(['paid_search', 'paid_social', 'seo_content', 'lifecycle_email', 'cro', 'affiliates', 'podcast_sponsorships', 'offline_events', 'pr_earned'])).min(0),
+  sourceOfTruth: z.enum(['google_analytics', 'mixpanel', 'amplitude', 'custom_bi', 'multiple_conflicting', 'none']),
+  reportingCadence: z.enum(['ad_hoc', 'monthly', 'bi_weekly', 'weekly', 'daily']),
   reportingOwner: z.boolean(),
   kpiClarity: z.enum(['none', 'vanity', 'blended', 'laddered']),
   experimentationBudgetPercent: z.number().min(0).max(100),
